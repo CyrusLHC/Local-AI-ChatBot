@@ -74,9 +74,9 @@ python ai_api_server.py
 
 # Open interface (in browser)
 open index.html
-
+```
 ---
 
 ## Preview
-<img src="Preview/Preview1" width="300"/>
-<img src="Preview/Preview2" width="300"/>
+<img src="Preview/Preview1.png"/>
+<img src="Preview/Preview2.png"/>
