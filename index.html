@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地AI對話系統</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> 本地AI對話系統</h1>
+            <p>完全本地運行的對話AI，無需互聯網連接，使用TinyLlama-1.1B開源模型</p>
+            <p>*互動時請使用英語</p>
+        </header>
+        
+        <div class="controls">
+            <div class="control-group">
+                <div class="control-header">
+                    <h3><i class="fas fa-sliders-h"></i> 響應長度</h3>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltiptext">
+                            <strong>控制AI回答的長度</strong><br>
+                            數值越大，回答越詳細<br>
+                            建議值：日常對話 100-150<br>
+                            長篇解釋 200-300
+                        </span>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="max-length" min="50" max="300" value="150">
+                    <div class="slider-value" id="max-length-value">150</div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <div class="control-header">
+                    <h3><i class="fas fa-thermometer-half"></i> 創造性</h3>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltiptext">
+                            <strong>控制回答的創意程度</strong><br>
+                            數值低：精確保守<br>
+                            數值高：富有創意<br>
+                            建議值：事實查詢 0.1-0.3<br>
+                            創意寫作 0.7-1.0
+                        </span>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="temperature" min="0.1" max="1.0" step="0.1" value="0.7">
+                    <div class="slider-value" id="temperature-value">0.7</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="chat-header">
+                <div>
+                    <h2><i class="fas fa-comments"></i> AI對話</h2>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot" id="connection-status"></div>
+                    <span id="status-text">已連接</span>
+                </div>
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message ai-message">
+                        <div>你好！我是一個本地運行的AI助手，完全不需要聯網。有什麼我可以幫助你的嗎？</div>
+                        <div class="timestamp">系統消息</div>
+                    </div>
+                </div>
+                
+                <div class="input-area">
+                    <input type="text" id="user-input" placeholder="輸入你的消息..." autocomplete="off">
+                    <button id="send-button">
+                        <i class="fas fa-paper-plane"></i> 發送
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="api-config">
+            <h2><i class="fas fa-cog"></i> API設置</h2>
+            <div class="api-url">
+                <input type="text" id="api-url" value="http://localhost:8000/chat">
+                <button id="update-api"><i class="fas fa-sync-alt"></i> 更新API</button>
+            </div>
+            <div class="api-status">
+                <div class="status" id="api-status"></div>
+                <span id="api-status-text">API狀態: 未連接</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>本地AI對話系統 &copy; 2025 | 基於TinyLlama-1.1B開源模型 | 完全本地運行</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
